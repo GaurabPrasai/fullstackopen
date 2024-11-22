@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
-
 const Header = (props) =>{
   return (
     <>
