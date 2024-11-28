@@ -22,6 +22,7 @@ const App = () => {
 
   return (
     <div>
+      
       <h1>give feedback</h1>
       <button onClick={forGood}>good</button>
       <button onClick={forNeutral}>neutral</button>
