@@ -24,10 +24,22 @@ const App = () => {
 
   };
 
+  
+  let copyAnecdotes = [...anecdotes]
+  copyAnecdotes =  copyAnecdotes.fill(0); // Creates an array [0, 0, 0, 0, 0] 
+
+  const storeVote = (copyAnecdotes) => {
+    return copyAnecdotes[selected] += 1;
+
+  };
+
   return (
     <div>
       {anecdotes[selected]} <br/>
+      {/* <p>has {storeVote()} vote</p> */}
+      <Button onClick={console.log(storeVote)} text="vote" />
       <Button onClick={genAnecdotes} text="next anecdotes" />
+
     </div>
   )
 }
