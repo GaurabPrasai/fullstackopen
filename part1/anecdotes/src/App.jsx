@@ -17,6 +17,8 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
+
 
   const genAnecdotes = () => {
 
@@ -24,20 +26,17 @@ const App = () => {
 
   };
 
-  
-  let copyAnecdotes = [...anecdotes]
-  copyAnecdotes =  copyAnecdotes.fill(0); // Creates an array [0, 0, 0, 0, 0] 
-
-  const storeVote = (copyAnecdotes) => {
-    return copyAnecdotes[selected] += 1;
-
+  const storeVote = () => {
+    let newVotes = [...votes];
+    newVotes[selected]++;
+    setVotes(newVotes);
   };
 
   return (
     <div>
       {anecdotes[selected]} <br/>
-      {/* <p>has {storeVote()} vote</p> */}
-      <Button onClick={console.log(storeVote)} text="vote" />
+      <p>has {votes[selected]} vote{votes[selected] > 1 ? 's' : ''}</p>
+      <Button onClick={storeVote} text="vote" />
       <Button onClick={genAnecdotes} text="next anecdotes" />
 
     </div>
