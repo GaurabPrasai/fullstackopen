@@ -38,7 +38,6 @@ const App = () => {
       <p>has {votes[selected]} vote{votes[selected] > 1 ? 's' : ''}</p>
       <Button onClick={storeVote} text="vote" />
       <Button onClick={genAnecdotes} text="next anecdotes" />
-
     </div>
   )
 }
