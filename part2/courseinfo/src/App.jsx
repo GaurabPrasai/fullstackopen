@@ -1,5 +1,5 @@
 import React from "react"
-
+import "./Course"
 
 const App = () => {
   const courses = [
