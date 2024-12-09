@@ -7,9 +7,8 @@ const App = () => {
 
   const handlePersonChange = (e) => {
     setNewPerson({
-      [e.target.name] : e.target.value,
-      [e.target.number] : e.target.value
-      
+      ...newPerson,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -35,8 +34,8 @@ const App = () => {
       <h2>Phonebook</h2>
       <form onSubmit={addPersons}>
         <div>
-          name: <input value={newPerson.name} onChange={handlePersonChange} />
-          number: <input value={newPerson.number} onChange={handlePersonChange} />
+          name: <input name="name" value={newPerson.name} onChange={handlePersonChange} />
+          number: <input name="number" value={newPerson.number} onChange={handlePersonChange} />
         </div>
         <div>
           <button type="submit">add</button>
@@ -45,7 +44,9 @@ const App = () => {
       <h2>Numbers</h2>
 
       {persons.map((person) => (
-        <Name key={person.name} name={person.name} number={person.number} />
+        <div key={person.name}>
+          {person.name} {person.number}
+        </div>
       ))}
     </div>
   );
