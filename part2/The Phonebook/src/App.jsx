@@ -5,25 +5,24 @@ import FilterPerson from "./components/FilterPersons";
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
+    { name: "Arto Hellas", number: "040-123456", id: 1 },
+    { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
+    { name: "Dan Abramov", number: "12-43-234345", id: 3 },
+    { name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
   ]);
-  const [newPerson, setNewPerson] = useState({name: "", number: ""});
-  const [filter, setFilter] = useState('');
+  const [newPerson, setNewPerson] = useState({ name: "", number: "" });
+  const [filter, setFilter] = useState("");
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
-  }
+  };
 
   const handlePersonChange = (e) => {
     setNewPerson({
       ...newPerson,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
-
 
   const addPersons = (e) => {
     e.preventDefault();
@@ -46,17 +45,27 @@ const App = () => {
     setNewPerson({ name: "", number: "" });
   };
 
-  const filteredPerson = persons.filter(person => person.name.toLowerCase().includes(filter.toLowerCase()));
+  const filteredPerson = persons.filter((person) =>
+    person.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <div>
       <h2>Phonebook</h2>
-      
-      <FilterPerson value={filter} func={handleFilterChange}/>
+
+      <FilterPerson value={filter} func={handleFilterChange} />
 
       <form onSubmit={addPersons}>
-        <AddNewPerson text={"name"} data={newPerson.name} func={handlePersonChange}/>
-        <AddNewPerson text={"number"} data={newPerson.number} func={handlePersonChange}/>
+        <AddNewPerson
+          text={"name"}
+          data={newPerson.name}
+          func={handlePersonChange}
+        />
+        <AddNewPerson
+          text={"number"}
+          data={newPerson.number}
+          func={handlePersonChange}
+        />
 
         <div>
           <button type="submit">add</button>

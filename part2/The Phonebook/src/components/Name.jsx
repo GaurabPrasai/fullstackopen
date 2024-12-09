@@ -1,8 +1,8 @@
-const Name = ({name, number}) => {
-    return(
-        <>
-            {name} {number}
-        </>
-    )
-}
-export default Name
+const Name = ({ name, number }) => {
+  return (
+    <>
+      {name} {number}
+    </>
+  );
+};
+export default Name;
