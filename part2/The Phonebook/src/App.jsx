@@ -35,7 +35,9 @@ const App = () => {
       <form onSubmit={addPersons}>
         <div>
           name: <input name="name" value={newPerson.name} onChange={handlePersonChange} />
-          number: <input name="number" value={newPerson.number} onChange={handlePersonChange} />
+          <div>
+            number: <input name="number" value={newPerson.number} onChange={handlePersonChange} />
+          </div>
         </div>
         <div>
           <button type="submit">add</button>
