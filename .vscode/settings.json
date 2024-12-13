@@ -1,0 +1,6 @@
+{
+    "gitdoc.enabled": true,
+    "gitdoc.pushMode": "forcePush",
+    "git.allowForcePush": true,
+    "gitdoc.autoPushDelay": 1000
+}
