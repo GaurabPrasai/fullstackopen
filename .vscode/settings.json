@@ -3,6 +3,6 @@
     "gitdoc.pushMode": "forcePush",
     "git.allowForcePush": true,
     "gitdoc.autoPushDelay": 1000,
-    "gitdoc.autoCommitDelay": 10000,
+    "gitdoc.autoCommitDelay": 1000,
     "gitdoc.autoPullDelay": 10000
 }
