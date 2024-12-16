@@ -44,12 +44,12 @@ const App = () => {
       id: persons.length > 0 ? persons[persons.length - 1].id + 1 : 1,
     };
 
-    axios
-      .post("http://localhost:3001/persons", personToAdd)
-      .then((response) => {
-        setPersons(persons.concat(response.data));
-        setNewPerson({ name: "", number: "" });
-      });
+    phonebookData
+    .create(personToAdd)
+    .then((addPersons) => {
+      setPersons(persons.concat(addPersons));
+      setNewPerson({ name: "", number: "" });
+    });
   };
 
   const filteredPerson = persons.filter((person) =>
