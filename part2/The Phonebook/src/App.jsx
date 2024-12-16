@@ -52,6 +52,16 @@ const App = () => {
     });
   };
 
+  const removeUser = (user) => {
+    alert(`Delete ${user.name} ?`)
+    phonebookData
+    .remove(user.id)
+    .then((user) => 
+      setPersons(user.filter((user) => user !== user)
+  ))
+    
+  }
+
   const filteredPerson = persons.filter((person) =>
     person.name.toLowerCase().includes(filter.toLowerCase())
   );
@@ -81,7 +91,7 @@ const App = () => {
       <h2>Numbers</h2>
       {filteredPerson.map((person) => (
         <div key={person.id}>
-          <Name name={person.name} number={person.number} />
+          <Name name={person.name} number={person.number} func={() => removeUser(person)}/>
         </div>
       ))}
     </div>

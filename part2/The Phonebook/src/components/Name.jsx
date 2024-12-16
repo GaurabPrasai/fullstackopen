@@ -1,7 +1,8 @@
-const Name = ({ name, number }) => {
+const Name = ({ name, number, func }) => {
   return (
     <>
-      {name} {number} <button onClick={() => alert(`Delete ${name} ?`)}>Delete</button>
+      {name} {number}{" "}
+      <button onClick={func}>Delete</button>
     </>
   );
 };
