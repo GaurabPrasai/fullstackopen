@@ -1,7 +1,7 @@
 const Name = ({ name, number }) => {
   return (
     <>
-      {name} {number}
+      {name} {number} <button onClick={() => alert(`Delete ${name} ?`)}>Delete</button>
     </>
   );
 };
