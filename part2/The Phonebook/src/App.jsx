@@ -3,6 +3,7 @@ import axios from "axios";
 import Name from "./components/Name";
 import AddNewPerson from "./components/AddNewPerson";
 import FilterPerson from "./components/FilterPersons";
+import phonebookData from "./services/phonebookData";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -10,8 +11,8 @@ const App = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/persons").then((response) => {
-      setPersons(response.data);
+    phonebookData.getAll().then((initialPersons) => {
+      setPersons(initialPersons);
     });
   }, []);
 
