@@ -9,7 +9,7 @@ const App = () => {
   const [persons, setPersons] = useState([]);
   const [newPerson, setNewPerson] = useState({ name: "", number: "" });
   const [filter, setFilter] = useState("");
-  const [errorMessage, setErrorMessage] = useState('some error message...')
+  const [errorMessage, setErrorMessage] = useState()
 
   useEffect(() => {
     phonebookData.getAll().then((initialPersons) => {
@@ -56,6 +56,7 @@ const App = () => {
           number: newPerson.number,
         })
         .then((updatedPerson) => {
+          setErrorMessage(`Updated ${updatedPerson.name}'s number`);
           setPersons(
             persons.map((person) =>
               person.id === existingPerson.id ? updatedPerson : person
@@ -83,6 +84,8 @@ const App = () => {
     phonebookData.create(personToAdd).then((addPersons) => {
       setPersons(persons.concat(addPersons));
       setNewPerson({ name: "", number: "" });
+      setErrorMessage(`Added ${newPerson.name}`);
+     
     });
   };
 
