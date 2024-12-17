@@ -1,8 +1,7 @@
 const Name = ({ name, number, func }) => {
   return (
     <>
-      {name} {number}{" "}
-      <button onClick={func}>Delete</button>
+      {name} {number} {" "}<button onClick={func}>Delete</button>
     </>
   );
 };

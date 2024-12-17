@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Name from "./components/Name";
 import AddNewPerson from "./components/AddNewPerson";
 import FilterPerson from "./components/FilterPersons";
@@ -49,7 +48,6 @@ const App = () => {
         `${newPerson.name} is already added to phonebook, replace the old number with a new one?`
       );
 
-      // Since alert() always returns undefined, you'll need to manually handle the confirmation
       phonebookData
         .update(existingPerson.id, {
           ...existingPerson,
