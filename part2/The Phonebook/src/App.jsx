@@ -44,23 +44,18 @@ const App = () => {
       id: persons.length > 0 ? persons[persons.length - 1].id + 1 : 1,
     };
 
-    phonebookData
-    .create(personToAdd)
-    .then((addPersons) => {
+    phonebookData.create(personToAdd).then((addPersons) => {
       setPersons(persons.concat(addPersons));
       setNewPerson({ name: "", number: "" });
     });
   };
 
   const removeUser = (user) => {
-    alert(`Delete ${user.name} ?`)
-    phonebookData
-    .remove(user.id)
-    .then((user) => 
-      setPersons(user.filter((user) => user !== user)
-  ))
-    
-  }
+    alert(`Delete ${user.name} ?`);
+    phonebookData.remove(user.id).then(() => {
+      setPersons(persons.filter((person) => person !== user));
+    });
+  };
 
   const filteredPerson = persons.filter((person) =>
     person.name.toLowerCase().includes(filter.toLowerCase())
@@ -91,7 +86,11 @@ const App = () => {
       <h2>Numbers</h2>
       {filteredPerson.map((person) => (
         <div key={person.id}>
-          <Name name={person.name} number={person.number} func={() => removeUser(person)}/>
+          <Name
+            name={person.name}
+            number={person.number}
+            func={() => removeUser(person)}
+          />
         </div>
       ))}
     </div>
