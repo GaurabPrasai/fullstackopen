@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import Name from "./components/Name";
 import AddNewPerson from "./components/AddNewPerson";
 import FilterPerson from "./components/FilterPersons";
+import Notification from "./components/Notifications";
 import phonebookData from "./services/phonebookData";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newPerson, setNewPerson] = useState({ name: "", number: "" });
   const [filter, setFilter] = useState("");
+  const [errorMessage, setErrorMessage] = useState('some error message...')
 
   useEffect(() => {
     phonebookData.getAll().then((initialPersons) => {
@@ -98,6 +100,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={errorMessage} />
 
       <FilterPerson value={filter} func={handleFilterChange} />
 
