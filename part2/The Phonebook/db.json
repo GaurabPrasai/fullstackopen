@@ -1,24 +1,9 @@
 {
   "persons": [
     {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": "1"
-    },
-    {
-      "name": "David Malen",
-      "number": "989225454145",
-      "id": "6"
-    },
-    {
       "name": "Brian Yu",
       "number": "795234864",
       "id": "7"
-    },
-    {
-      "name": "Dog Luyd",
-      "number": "989565648415",
-      "id": "8"
     },
     {
       "name": "Perl Harbour",
@@ -47,13 +32,8 @@
     },
     {
       "id": "911111",
-      "name": "jonny haris",
-      "number": "12121212"
-    },
-    {
-      "id": "9111111",
-      "name": "Ascchu ray",
-      "number": "45454444"
+      "name": "Ted Mosby",
+      "number": "4343433222"
     }
   ]
 }

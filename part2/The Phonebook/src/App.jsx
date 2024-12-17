@@ -64,8 +64,7 @@ const App = () => {
           );
         })
         .catch((error) => {
-          console.error("Error updating number:", error);
-          alert(`Failed to update number for ${newPerson.name}`);
+          setErrorMessage(`Information of ${existingPerson.name} has already been removed from server`);
         });
 
       return;
