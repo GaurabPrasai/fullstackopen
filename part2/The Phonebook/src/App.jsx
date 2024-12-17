@@ -30,9 +30,45 @@ const App = () => {
   const addPersons = (e) => {
     e.preventDefault();
 
+    const isDuplicateNumber = persons.some(
+      (person) =>
+        person.name.toLowerCase() === newPerson.name.toLowerCase() &&
+        person.number !== newPerson.number
+    );
+
     const isDuplicate = persons.some(
       (person) => person.name.toLowerCase() === newPerson.name.toLowerCase()
     );
+
+    if (isDuplicateNumber) {
+      const existingPerson = persons.find(
+        (person) => person.name.toLowerCase() === newPerson.name.toLowerCase()
+      );
+
+      const confirmReplace = alert(
+        `${newPerson.name} is already added to phonebook, replace the old number with a new one?`
+      );
+
+      // Since alert() always returns undefined, you'll need to manually handle the confirmation
+      phonebookData
+        .update(existingPerson.id, {
+          ...existingPerson,
+          number: newPerson.number,
+        })
+        .then((updatedPerson) => {
+          setPersons(
+            persons.map((person) =>
+              person.id === existingPerson.id ? updatedPerson : person
+            )
+          );
+        })
+        .catch((error) => {
+          console.error("Error updating number:", error);
+          alert(`Failed to update number for ${newPerson.name}`);
+        });
+
+      return;
+    }
 
     if (isDuplicate) {
       alert(`${newPerson.name} is already added to phonebook`);
