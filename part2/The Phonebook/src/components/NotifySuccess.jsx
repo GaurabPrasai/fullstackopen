@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Notification = ({ message }) => {
+const Success = ({ message }) => {
   const [successMessage, setSuccessMessage] = useState(message);
 
   useEffect(() => {
@@ -8,12 +8,10 @@ const Notification = ({ message }) => {
     if (message) {
       setSuccessMessage(message);
 
-      // Create a timeout to clear the message
       const timer = setTimeout(() => {
         setSuccessMessage(null);
-      }, 4000);
+      }, 5000);
 
-      // Cleanup function to clear the timeout if component unmounts or message changes
       return () => clearTimeout(timer);
     }
   }, [message]);
@@ -23,9 +21,7 @@ const Notification = ({ message }) => {
     return null;
   }
 
-  return (
-    <div className="success">{successMessage}</div>
-  );
+  return <div className="success">{successMessage}</div>;
 };
 
-export default Notification;
+export default Success;

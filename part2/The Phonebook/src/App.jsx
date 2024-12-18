@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import Name from "./components/Name";
 import AddNewPerson from "./components/AddNewPerson";
 import FilterPerson from "./components/FilterPersons";
-import Notification from "./components/Notifications";
+import Success from "./components/NotifySuccess";
+import ErrorMsg from "./components/NotifyError";
 import phonebookData from "./services/phonebookData";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newPerson, setNewPerson] = useState({ name: "", number: "" });
   const [filter, setFilter] = useState("");
-  const [errorMessage, setErrorMessage] = useState()
+  const [successMessage, setSuccessMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     phonebookData.getAll().then((initialPersons) => {
@@ -56,7 +58,7 @@ const App = () => {
           number: newPerson.number,
         })
         .then((updatedPerson) => {
-          setErrorMessage(`Updated ${updatedPerson.name}'s number`);
+          setSuccessMessage(`Updated ${updatedPerson.name}'s number`);
           setPersons(
             persons.map((person) =>
               person.id === existingPerson.id ? updatedPerson : person
@@ -64,7 +66,9 @@ const App = () => {
           );
         })
         .catch((error) => {
-          setErrorMessage(`Information of ${existingPerson.name} has already been removed from server`);
+          setErrorMessage(
+            `Information of ${existingPerson.name} has already been removed from server`
+          );
         });
 
       return;
@@ -83,8 +87,7 @@ const App = () => {
     phonebookData.create(personToAdd).then((addPersons) => {
       setPersons(persons.concat(addPersons));
       setNewPerson({ name: "", number: "" });
-      setErrorMessage(`Added ${newPerson.name}`);
-     
+      setSuccessMessage(`Added ${newPerson.name}`);
     });
   };
 
@@ -102,7 +105,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={errorMessage} />
+      <Success message={successMessage} />
+      <ErrorMsg message={errorMessage} />
 
       <FilterPerson value={filter} func={handleFilterChange} />
 
