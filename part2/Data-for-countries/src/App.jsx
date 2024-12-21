@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import FilterCountries from './components/FilterCountries'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [filter, setFilter] = useState("");
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
 
   return (
     <>
-      
+      <FilterCountries value={filter} func={handleFilterChange}/>
     </>
   )
 }
