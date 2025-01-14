@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     CountriesData.getAll()
       .then(countries => setCountries(countries));
-  }, []); // Only fetch once when component mounts
+  }, []);
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-      find countries <input value={filter} onChange={handleFilterChange} />
+      <FilterCountries value={filter} func={handleFilterChange} />
       {displayCountries()}
     </>
   );
