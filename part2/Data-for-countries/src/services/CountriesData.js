@@ -3,7 +3,7 @@ const api_url = 'https://studies.cs.helsinki.fi/restcountries/api/all'
 const api_country = 'https://studies.cs.helsinki.fi/restcountries/api/name'
 
 const getAll = (name) => {
-    const request = axios.get(`${api_country}/${name}`)
+    const request = axios.get(api_url)
     return request.then(response => response.data)
 }
 
