@@ -5,6 +5,7 @@ import CountriesData from "./services/CountriesData";
 function App() {
   const [countries, setCountries] = useState([]);
   const [filter, setFilter] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   useEffect(() => {
     CountriesData.getAll()
@@ -19,6 +20,10 @@ function App() {
     country.name.common.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const showCountriesDetails = (country) => {
+    setSelectedCountry(country);
+  }
+
   const displayCountries = () => {
     if (!filter) {
       return null;
@@ -27,6 +32,8 @@ function App() {
     if (filteredCountries.length > 10) {
       return <div>Too many matches, specify another filter</div>;
     }
+
+    console.log(selectedCountry);
 
     if (filteredCountries.length === 1) {
       const country = filteredCountries[0];
@@ -51,7 +58,7 @@ function App() {
     }
 
     return filteredCountries.map((country) => (
-      <div key={country.name.common}>{country.name.common}</div>
+      <div key={country.name.common}>{country.name.common} <button onClick={() =>showCountriesDetails(country)} >Show</button></div>
     ));
   };
 
